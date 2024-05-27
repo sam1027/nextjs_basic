@@ -2,6 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export default function Update(props){
     const [title, setTitle] = useState('');
@@ -35,15 +38,19 @@ export default function Update(props){
                 router.refresh();
             });
         }}>
-            <p>
-                <input type="text" name="title" placeholder="title" value={title} onChange={(e) => setTitle(e.target.value)}/>
-            </p>
-            <p>
-                <textarea name="body" placeholder="body" defaultValue={body} onChange={(e) => setBody(e.target.value)}></textarea>
-            </p>
-            <p>
-                <input type="submit" value={"수정"} />
-            </p>
+            <Stack spacing={2}>
+                <TextField id="standard-basic" label="Title" variant="standard" name="title" value={title}/>
+                <TextField
+                    id="standard-multiline-flexible"
+                    label="Content"
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                    name="body"
+                    defaultValue={body}
+                />
+                <Button variant="outlined" type="submit">Save</Button>
+            </Stack>
         </form>
     )
 }

@@ -1,6 +1,9 @@
 "use client"
 
 import { useRouter } from "next/navigation";
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export default function Create(){
     const router = useRouter();
@@ -26,15 +29,18 @@ export default function Create(){
                 router.refresh();
             });
         }}>
-            <p>
-                <input type="text" name="title" placeholder="title" />
-            </p>
-            <p>
-                <textarea name="body" placeholder="body"></textarea>
-            </p>
-            <p>
-                <input type="submit" value={"생성"} />
-            </p>
+            <Stack spacing={2}>
+                <TextField id="standard-basic" label="Title" variant="standard" name="title" />
+                <TextField
+                    id="standard-multiline-flexible"
+                    label="Content"
+                    multiline
+                    maxRows={4}
+                    variant="standard"
+                    name="body"
+                />
+                <Button variant="outlined" type="submit">Save</Button>
+            </Stack>
         </form>
     )
 }
