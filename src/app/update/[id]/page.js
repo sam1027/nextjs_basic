@@ -39,7 +39,7 @@ export default function Update(props){
             });
         }}>
             <Stack spacing={2}>
-                <TextField id="standard-basic" label="Title" variant="standard" name="title" value={title}/>
+                <TextField id="standard-basic" label="Title" variant="standard" name="title" value={title} onChange={e => setTitle(e.target.value)}/>
                 <TextField
                     id="standard-multiline-flexible"
                     label="Content"
@@ -48,6 +48,7 @@ export default function Update(props){
                     variant="standard"
                     name="body"
                     defaultValue={body}
+                    onChange={e => setBody(e.target.value)}
                 />
                 <Button variant="outlined" type="submit">Save</Button>
             </Stack>
